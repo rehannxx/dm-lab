@@ -1,0 +1,331 @@
+Exp 2: — K-Means Clustering
+Aim
+
+To implement the K-Means clustering algorithm and group data points into meaningful clusters based on similarity.
+
+Theory (Easy Paragraph)
+
+K-Means clustering is an unsupervised learning method used to divide data into K groups or clusters. It works by selecting K points as centroids and assigning each data point to the nearest centroid using distance, usually Euclidean distance. After assigning all points, the centroids are updated by taking the mean of the points in each cluster. This process repeats until the cluster assignments no longer change. K-Means is simple, efficient, and commonly used for grouping similar data in applications like customer segmentation, image compression, and pattern recognition.
+
+Procedure
+
+Prepare the dataset with numeric attributes (example: X1 and X2).
+
+Open WEKA → Explorer → Preprocess and load the dataset.
+
+Go to the Cluster tab.
+
+Select SimpleKMeans as the clusterer.
+
+Set the number of clusters K = 2 (or required).
+
+Choose EuclideanDistance.
+
+Click Start.
+
+View cluster assignments and centroids.
+
+Visualize clusters using the plot option.
+
+Conclusion
+
+K-Means successfully divided the dataset into clusters based on the similarity of data points. The centroids adjusted automatically until the algorithm reached a stable grouping.
+
+🌟 EXPERIMENT 3 — Data Processing Techniques on Dataset
+A) Attribute Selection
+Aim
+
+To preprocess a given dataset by selecting the most important attributes using WEKA’s Attribute Selection methods.
+
+Theory (Easy Paragraph)
+
+Attribute selection, also called feature selection, is a technique used to identify the most useful attributes in a dataset. Instead of using all features, this process selects only the ones that contribute the most to predicting the target output. This helps improve model accuracy, reduces training time, and removes unnecessary or noisy features. WEKA provides Attribute Selection tools that use evaluators (like CFS Subset Evaluator) to measure how good a subset of features is, and search methods (like Best First) to find the best combination. This makes the learning process faster and more efficient.
+
+Procedure (Attribute Selection)
+
+Open WEKA → Explorer → Preprocess.
+
+Load the dataset from your computer.
+
+Go to the Select Attributes tab.
+
+Choose CfsSubsetEval as the Attribute Evaluator.
+
+Choose BestFirst as the Search Method.
+
+Select the class attribute from the dropdown.
+
+Choose one of the test modes:
+
+Use training set
+
+Cross-validation
+
+Percentage split
+
+Click Start to run attribute selection.
+
+Observe which attributes were selected in the result panel.
+
+Conclusion (Attribute Selection)
+
+The most relevant attributes for prediction were successfully identified using WEKA’s Attribute Selection tool. This reduced the dataset size and improved the quality of the learning process.
+
+B) Handling Missing Values
+Aim
+
+To preprocess a given dataset by replacing missing attribute values using the mean or most frequent value.
+
+Theory (Easy Paragraph)
+
+Many real-world datasets contain missing values, which can affect the accuracy of machine learning models. To fix this, WEKA provides filters that automatically replace missing values. For numeric attributes, the missing values are replaced with the mean of the available values. For nominal or categorical attributes, the missing values are replaced with the most common category. This simple preprocessing step ensures the dataset becomes complete and ready for analysis without removing any important data.
+
+Procedure (Handling Missing Values)
+
+Open WEKA → Explorer → Preprocess.
+
+Load the dataset containing missing values.
+
+In the Filter section, click Choose.
+
+Go to:
+filters → unsupervised → attribute → ReplaceMissingValues
+
+Apply the filter.
+
+WEKA will automatically replace:
+
+Numeric missing values → with mean
+
+Nominal missing values → with most frequent value
+
+Check the output to confirm missing values are replaced.
+
+Save the processed dataset if needed.
+
+Conclusion (Handling Missing Values)
+
+Missing values in the dataset were successfully replaced using the ReplaceMissingValues filter. This made the dataset complete and ready for machine learning tasks without losing any important information.
+
+EXPERIMENT 4: Classification Using Naïve Bayes
+AIM
+
+To apply the Naïve Bayes classifier on a given dataset and classify whether a customer buys a computer.
+
+THEORY
+
+Naïve Bayes is a probabilistic classification method based on Bayes’ Theorem, assuming independence among attributes.
+It calculates:
+
+Prior probability of each class
+
+Conditional probability of attribute values
+
+Posterior probability using:
+
+P(C∣X)=P(X∣C)P(C)
+The class with the highest posterior probability is selected as the final classification.
+
+PROCEDURE
+
+Prepare the dataset containing attributes: age, income, student, credit-rating, and class.
+
+Calculate prior probabilities for each class (Yes/No).
+
+Compute conditional probabilities for all attribute values with respect to each class.
+
+Apply Naïve Bayes formula to find posterior probabilities for the test instance.
+
+Compare the results and assign the class with the higher probability.
+
+Verify the output using the WEKA tool by selecting Naïve Bayes under the Classify tab.
+
+CONCLUSION
+
+The Naïve Bayes classifier correctly classifies the given test instance as “Buys Computer = Yes” because its posterior probability is higher than the “No” class.
+
+🌟 EXPERIMENT 5 — Decision Tree (J48)
+Aim
+
+To generate a decision tree using the J48 classifier in WEKA and classify data based on attributes.
+
+Theory (Easy Paragraph)
+
+A decision tree is a supervised learning model used for classification. It works by repeatedly splitting the dataset based on the attribute that best separates the data, measured using entropy and information gain. The attribute with the highest information gain becomes the root of the tree. Each internal node represents a condition, and each leaf node represents a final class. J48 is WEKA’s version of the C4.5 algorithm, which creates decision trees using these principles. Decision trees are easy to understand and widely used in areas like medical diagnosis, credit approval, and recommendation systems.
+
+Procedure
+
+Open WEKA → Explorer → Preprocess.
+
+Load the dataset (e.g., buys_computer).
+
+Go to the Classify tab.
+
+Choose J48 from the trees category.
+
+Select the class attribute (the target).
+
+Click Start to generate the tree.
+
+Right-click the result → Visualize Tree.
+
+Compare the tree structure with manually calculated rules.
+
+Conclusion
+
+A clear and accurate decision tree was generated using the J48 algorithm. The output matched the expected classification based on information gain, proving J48 effective for classification tasks.
+
+🌟 EXPERIMENT 6 — Association Rule Mining (Apriori)
+Aim
+
+To apply the Apriori algorithm in WEKA and generate association rules from the dataset.
+
+Theory (Easy Paragraph)
+
+Association rule mining finds interesting relationships between items in a dataset. The Apriori algorithm works by identifying frequent itemsets based on minimum support and then forming association rules using confidence. A rule like A → B means that when A occurs, B is likely to occur. Apriori uses a bottom-up approach, generating larger itemsets from smaller ones and removing combinations that do not meet the support threshold. This technique is commonly used in market basket analysis, shopping pattern recognition, and recommendation systems.
+
+Procedure
+
+Open WEKA → Explorer → Preprocess.
+
+Load the dataset test.arff.
+
+Go to the Associate tab.
+
+Select Apriori as the associator.
+
+Set minimum support and confidence if needed.
+
+Click Start to generate rules.
+
+View the top association rules in WEKA output.
+
+Conclusion
+
+The Apriori algorithm successfully produced meaningful association rules showing strong relationships between dataset attributes. The rules helped reveal patterns that may not be obvious directly.
+
+🌟 EXPERIMENT 7 — Agglomerative Hierarchical Clustering
+Aim
+
+To perform agglomerative (hierarchical) clustering using WEKA and observe how clusters merge step by step.
+
+Theory (Easy Paragraph)
+
+Agglomerative clustering is a hierarchical clustering method that starts by treating each data point as its own cluster. It then repeatedly merges the two closest clusters based on a distance measure like Euclidean distance. This continues until all points belong to a single cluster or until a stopping condition is met. The result can be displayed as a dendrogram, which shows how clusters combine at each step. This method is useful in biology, social sciences, and clustering small datasets.
+
+Procedure
+
+Prepare the dataset (agglomerative.arff) with numeric values.
+
+Open WEKA → Preprocess and load the file.
+
+Go to the Cluster tab.
+
+Select HierarchicalClusterer.
+
+Click on the text to open settings.
+
+Set Link Type (Single/Complete/Average).
+
+Select EuclideanDistance.
+
+Click Start.
+
+Observe the cluster merging steps and dendrogram.
+
+Conclusion
+
+Agglomerative clustering grouped similar data points into clusters by merging the closest ones step by step. The dendrogram clearly displayed how clusters were formed, showing the hierarchical nature of the algorithm.
+
+🌟 EXPERIMENT 8 – Implementation of FP-Growth Algorithm
+Aim
+
+To generate frequent itemsets and association rules using the FP-Growth algorithm on a given dataset.
+
+Theory (Easy Paragraph)
+
+FP-Growth (Frequent Pattern Growth) is an efficient algorithm used for mining frequent itemsets without generating candidate sets like in Apriori. It works by compressing the dataset into a tree structure called the FP-Tree, where common items share common paths. This reduces the size of the dataset and speeds up the mining process. The algorithm then performs a recursive search on the FP-Tree to find frequent patterns. FP-Growth is widely used in market basket analysis, recommendation systems, and pattern discovery because it is faster and more memory-efficient than Apriori.
+
+Procedure
+
+Open WEKA → Explorer.
+
+Go to the Preprocess tab.
+
+Load the dataset file (e.g., fp_growth.arff).
+
+After loading the dataset, go to the Associate tab.
+
+From the list of algorithms, select FP-Growth.
+
+Set parameters such as:
+
+Minimum support
+
+Minimum confidence
+
+Number of rules to output
+
+Click on Start to run the FP-Growth algorithm.
+
+Observe the results:
+
+Frequent itemsets
+
+Generated association rules
+
+Analyze which items are frequently purchased together and understand the pattern relationships.
+
+Conclusion
+
+The FP-Growth algorithm was successfully implemented to generate frequent itemsets and association rules. The experiment demonstrates how FP-Growth efficiently finds hidden patterns in a dataset without generating a large number of candidate sets. The results help identify frequently occurring item combinations, making it useful for market basket analysis and decision-making applications.
+
+🌟 EXPERIMENT 9 — Distance Matrix Construction Using Various Distance Measures
+Aim
+
+To construct a distance matrix for a given dataset using commonly used distance measures such as Euclidean distance and Manhattan distance.
+
+Theory (Easy Paragraph)
+
+Distance measures help us understand how similar or different two data points are. They are important in clustering, pattern recognition, and many machine learning tasks. A distance matrix is a table where each cell (i, j) shows the distance between two objects i and j. Smaller values mean the objects are more similar. The two most common distance measures are Euclidean distance, which calculates straight-line distance between two points, and Manhattan distance, which adds the absolute differences of their coordinates. These measures help compare data points and group them meaningfully.
+
+
+
+
+
+🌟 Procedure
+
+Open Notepad and type the dataset in ARFF format exactly as shown above.
+
+Save the file as:
+Filename: distance_matrix.arff
+Type: All Files
+Encoding: UTF-8
+
+Open WEKA → Explorer → Preprocess.
+
+Click Open File and load the ARFF dataset.
+
+Go to the Visualize tab to see the plot of the points.
+
+Adjust the X-axis = X and Y-axis = Y using the sliders at the bottom.
+
+Use the given coordinate values to manually calculate:
+
+Euclidean distance
+
+Manhattan distance
+
+Construct the distance matrix for each distance measure.
+
+Verify that the matrices are symmetric and diagonal values are zero.
+
+🌟 Euclidean Distance Formula
+
+d(x,y)=(x1​−y1​)2+(x2​−y2​)2 (under root)
+🌟 Manhattan Distance Formula
+d(x,y)=∣x1​−y1​∣+∣x2​−y2​∣
+∣
+🌟 Conclusion
+
+The Euclidean and Manhattan distance matrices were successfully constructed for the given dataset. Both matrices correctly represent how far apart the points A, B, and C are. Euclidean distance shows the straight-line distance, while Manhattan distance measures movement along horizontal and vertical paths. The matrices are symmetric, and all diagonal values are zero, confirming correct calculations.
